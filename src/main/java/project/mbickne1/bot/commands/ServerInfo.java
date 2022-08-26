@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class ServerInfo extends Command {
 
     public ServerInfo() {
-        this.name = "about-this-server";
+        this.name = "server-info";
         this.aliases = new String[]{"server"};
         this.help = "Gives basic user information about the server";
     }
@@ -22,8 +22,8 @@ public class ServerInfo extends Command {
         EmbedBuilder eb = new EmbedBuilder();
         eb.setColor(Color.RED);
         eb.setAuthor(event.getGuild().getName());
-        eb.addField("Server Owner:", event.getGuild().getOwner().getEffectiveName(), true);
-        eb.addField("Member Count:", Integer.toString(event.getGuild().getMembers().toArray().length), true);
+        eb.addField("Server Owner:", event.getGuild().getOwner().getEffectiveName(), false);
+        eb.addField("Member Count:", Integer.toString(event.getGuild().getMembers().toArray().length), false);
 
         //Sends the embed as a message
         event.getChannel().sendMessageEmbeds(eb.build()).queue();
