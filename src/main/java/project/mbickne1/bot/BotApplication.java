@@ -36,34 +36,11 @@ public class BotApplication implements CommandLineRunner {
 		SpringApplication.run(BotApplication.class, args);
 	}
 
-	//Start The Bot Upon Launching Application
-	//Refactor ?
-	@Bean
-	@ConfigurationProperties(value ="discord-api")
-	public JDA startBot() throws LoginException {
-		JDA bot = JDABuilder.createDefault("OTg3MDMxODUzNjQwODY3ODQw.GTsQH4.vPpyTEZG2z5XCvreIv9bQhylv1snnxm63u0x4s")
-				.setActivity(Activity.listening("Juice WRLD"))
-				.enableIntents(GatewayIntent.MESSAGE_CONTENT)
-				.build();
-
-		CommandClientBuilder builder = new CommandClientBuilder();
-
-		builder.setOwnerId("987031853640867840");
-		//command prefix
-		builder.setPrefix("$");
-		//Add our command(this is now where we register the commands)
-		builder.addCommand(new ServerInfo());
-		//build the command client
-		CommandClient client = builder.build();
-		//We no longer need to register each command class here, we just register the command client
-		bot.addEventListener(client);
-
-		return bot;
-	}
-
 	@Override
 	public void run(String... args) throws Exception {
 		this.botService.start();
+
+		this.botService.registerCommands(new ServerInfo().getChildren());
 	}
 
 	@RequestMapping("/")
