@@ -2,10 +2,12 @@ package project.mbickne1.bot.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import com.jagrosh.jdautilities.doc.standard.CommandInfo;
 import net.dv8tion.jda.api.EmbedBuilder;
 
 import java.awt.*;
 import java.util.Arrays;
+
 
 public class ServerInfo extends Command {
 

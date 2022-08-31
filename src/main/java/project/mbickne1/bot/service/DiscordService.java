@@ -1,7 +1,7 @@
 package project.mbickne1.bot.service;
 
-import com.jagrosh.jdautilities.command.Command;
 import org.springframework.stereotype.Service;
+import project.mbickne1.bot.components.impl.CommandComponent;
 
 import javax.security.auth.login.LoginException;
 
@@ -10,7 +10,7 @@ public interface DiscordService {
 
     void start() throws LoginException;
 
-    void registerCommands(Command[] command);
+    void registerCommands(CommandComponent[] command);
 
     void stop();
 
