@@ -3,7 +3,6 @@ package project.mbickne1.bot.components.impl;
 import org.springframework.stereotype.Component;
 import project.mbickne1.bot.components.ICommandComponent;
 
-@Component
 public class CommandComponent<T> implements ICommandComponent<T> {
 
     private T command;
