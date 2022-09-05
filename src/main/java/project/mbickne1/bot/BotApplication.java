@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import project.mbickne1.bot.commands.GetUsers;
 import project.mbickne1.bot.commands.ServerInfo;
 import project.mbickne1.bot.components.impl.CommandComponent;
 import project.mbickne1.bot.service.DiscordService;
@@ -34,7 +35,8 @@ public class BotApplication implements CommandLineRunner {
 
 		this.botService.registerCommands(
 				new CommandComponent[]{
-						new CommandComponent<ServerInfo>(new ServerInfo())
+						new CommandComponent<ServerInfo>(new ServerInfo()),
+						new CommandComponent<GetUsers>(new GetUsers())
 				});
 	}
 
