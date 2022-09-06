@@ -18,7 +18,7 @@ public class DiscordServiceImpl implements DiscordService {
     @Override
     public void start() throws LoginException {
         this.bot = JDABuilder.createDefault("bot-token-here")
-                .setActivity(Activity.listening("Juice WRLD"))
+                .setActivity(Activity.playing("Dungeons and Dragons"))
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .build();
 
