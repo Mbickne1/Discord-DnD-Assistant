@@ -7,7 +7,8 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @OneToOne
+    private Long user_id;
     @Column(name = "discord_id")
     private String discord_id;
 
@@ -22,14 +23,14 @@ public class User {
     }
 
     public User(Long id, String discord_id, String name, String server_id) {
-        this.id = id;
+        this.user_id = id;
         this.discord_id = discord_id;
         this.server_id = server_id;
         this.name = name;
     }
 
     public Long getId() {
-        return this.id;
+        return this.user_id;
     }
 
     public String getDiscord_id() { return this.discord_id; }
@@ -52,7 +53,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "ID: " + this.id + "discord_Id: " + this.discord_id;
+        return "ID: " + this.user_id + "discord_Id: " + this.discord_id;
     }
 
 

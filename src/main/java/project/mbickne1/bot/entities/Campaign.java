@@ -1,6 +1,7 @@
 package project.mbickne1.bot.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "campaign")
@@ -8,34 +9,36 @@ public class Campaign {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long campaign_id;
 
     @Column(name = "name")
     private String name;
 
+//    @OneToOne(mappedBy = "user_id")
     @Column(name = "dungeon_master")
-    private String dungeon_master;
+    private Long dungeon_master;
 
-    @Column(name = "characters")
-    private Character[] characters;
+//    @Column(name = "characters")
+    @OneToMany(mappedBy = "character_id")
+    private List<Character> characters;
 
     public Campaign() {
 
     }
 
-    public Campaign(Long id, String name, String dungeon_master, Character[] characters) {
-        this.id = id;
+    public Campaign(Long id, String name, Long dungeon_master, List<Character> characters) {
+        this.campaign_id = id;
         this.name = name;
         this.dungeon_master = dungeon_master;
         this.characters = characters;
     }
 
     public Long getId() {
-        return id;
+        return campaign_id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.campaign_id = id;
     }
 
     public String getName() {
@@ -46,19 +49,19 @@ public class Campaign {
         this.name = name;
     }
 
-    public String getDungeon_master() {
+    public Long getDungeon_master() {
         return dungeon_master;
     }
 
-    public void setDungeon_master(String dungeon_master) {
+    public void setDungeon_master(Long dungeon_master) {
         this.dungeon_master = dungeon_master;
     }
 
-    public Character[] getCharacters() {
+    public List<Character> getCharacters() {
         return characters;
     }
 
-    public void setCharacters(Character[] characters) {
+    public void setCharacters(List<Character> characters) {
         this.characters = characters;
     }
 }

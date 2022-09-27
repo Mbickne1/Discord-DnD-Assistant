@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepo;
 
-    @GetMapping(path = "/user")
+    @GetMapping(path = "/api/user")
     public List<JSONObject> listAll() {
         List<User> users = userRepo.findAll();
 

@@ -6,4 +6,6 @@ import project.mbickne1.bot.entities.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
+
+    User findByDiscordId(String discord_id);
 }
