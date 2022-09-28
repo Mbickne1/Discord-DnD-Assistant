@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import project.mbickne1.bot.components.impl.CommandComponent;
+import project.mbickne1.bot.config.Enviornment;
 import project.mbickne1.bot.service.CommandClientService;
 import project.mbickne1.bot.service.DiscordService;
 
@@ -13,11 +14,12 @@ import javax.security.auth.login.LoginException;
 
 public class DiscordServiceImpl implements DiscordService {
     private JDA bot;
+    private Enviornment env = new Enviornment();
     private CommandClientService commandService = new CommandClientServiceImpl();
 
     @Override
     public void start() throws LoginException {
-        this.bot = JDABuilder.createDefault("OTg3MDMxODUzNjQwODY3ODQw.GFqUd4.eqNR2DkBaJJM7CJ_lvut-hfgDApGmkGtuYtRno")
+        this.bot = JDABuilder.createDefault(env.BOT_TOKEN)
                 .setActivity(Activity.playing("Dungeons and Dragons"))
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .build();
