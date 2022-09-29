@@ -18,7 +18,7 @@ public class UserController {
     private UserRepository userRepo;
 
     // GET Request for retrieving all User Entities
-    @GetMapping(path = "/api/user/all")
+    @GetMapping(path = "/api/v1/user/all")
     public List<JSONObject> listAll() {
         List<User> users = userRepo.findAll();
 
@@ -36,12 +36,11 @@ public class UserController {
             res.add(new JSONObject(json));
         }
 
-
         return res;
     }
 
     //This GET Request is used to get users by either serverId or discordId
-    @RequestMapping(path = "api/user/")
+    @RequestMapping(path = "api/v1/user/")
     @ResponseBody
     public List<JSONObject> getUserWithParameters(
             @RequestParam(value = "serverId", required = false) String serverId,
@@ -79,7 +78,7 @@ public class UserController {
     }
 
     //PUT -- This can be used to create and update an Enitity
-    @RequestMapping(path = "api/user/add/")
+    @RequestMapping(path = "api/v1/user/add/")
     @ResponseBody
     public ResponseEntity<User> createUserEntity(
             @RequestParam(value = "discordId", required = false) String discordId,
@@ -100,11 +99,27 @@ public class UserController {
         }
 
         final User updatedUser = userRepo.save(user);
-
-        System.out.println(user.toString());
-
+        //Add other response entity scenarios ??
         return ResponseEntity.ok(updatedUser);
     }
 
-    //Will want to create a method for updating a discord id
+    //TODO: This endpoint needs better error handling but it works for now
+    @RequestMapping(path = "api/v1/user/updateDiscordId/")
+    @ResponseBody
+    public ResponseEntity<User> updateDiscordId(
+            @RequestParam(value = "currentId", required = true) String currentId,
+            @RequestParam(value = "newId", required = true) String newId
+    ) {
+        User user = userRepo.findByDiscordId(currentId);
+
+        if(user == null) {
+            return ResponseEntity.noContent().build();
+        }
+
+        user.setDiscordId(newId);
+
+        final User updatedUser = userRepo.save(user);
+        //Add other response entity scenarios ??
+        return ResponseEntity.ok(updatedUser);
+    }
 }
