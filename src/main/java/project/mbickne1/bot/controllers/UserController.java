@@ -55,6 +55,7 @@ public class UserController {
             users = new ArrayList<>();
             users.add(userRepo.findByDiscordId(discordId));
         } else {
+            //TODO: Need to implement proper handling error handling and response. ErrorService?
             Map<String, Boolean> json = new HashMap<String, Boolean>();
             json.put("error", true);
 

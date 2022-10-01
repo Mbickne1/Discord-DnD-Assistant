@@ -9,14 +9,16 @@ public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @ManyToOne
-    private Long character_id;
+    private Long characterId;
 
 //    @OneToOne(mappedBy = "campaign_id")
-    @Column(name = "campaign_id")
-    private Long campaign_id;
+    @Column(name = "campaignId")
+    private Long campaignId;
 //    @OneToOne(mappedBy = "user_id")
-    @Column(name = "owner_id")
-    private Long owner_id;
+    //TODO: FIGURE THIS SHIT OUT
+    @OneToOne(mappedBy = "discordId")
+//    @Column(name = "ownerId")
+    private String ownerId;
 
     @Column(name = "subclass")
     private String subclass;
@@ -39,17 +41,17 @@ public class Character {
 
     public Character(
             Long id,
-            Long campaign_id,
-            Long owner_id,
+            Long campaignId,
+            String ownerId,
             String subclass,
             String level,
             String alignment,
             String race,
             String name
     ) {
-        this.character_id = id;
-        this.campaign_id = campaign_id;
-        this.owner_id = owner_id;
+        this.characterId = id;
+        this.campaignId = campaignId;
+        this.ownerId = ownerId;
         this.subclass = subclass;
         this.level = level;
         this.alignment = alignment;
@@ -58,27 +60,27 @@ public class Character {
     }
 
     public Long getId() {
-        return character_id;
+        return characterId;
     }
 
     public void setId(Long id) {
-        this.character_id = id;
+        this.characterId = id;
     }
 
-    public Long getCampaign_id() {
-        return campaign_id;
+    public Long getCampaignId() {
+        return campaignId;
     }
 
-    public void setCampaign_id(Long campaign_id) {
-        this.campaign_id = campaign_id;
+    public void setCampaignId(Long campaignId) {
+        this.campaignId = campaignId;
     }
 
-    public Long getOwner_id() {
-        return owner_id;
+    public String getOwnerId() {
+        return ownerId;
     }
 
-    public void setOwner_id(Long owner_id) {
-        this.owner_id = owner_id;
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 
     public String getSubclass() {

@@ -19,7 +19,7 @@ public class Campaign {
     private Long dungeon_master;
 
 //    @Column(name = "characters")
-    @OneToMany(mappedBy = "character_id")
+    @OneToMany(mappedBy = "characterId")
     private List<Character> characters;
 
     public Campaign() {
