@@ -42,9 +42,4 @@ public class BotApplication implements CommandLineRunner {
 				});
 	}
 
-	@RequestMapping("/")
-	String home() {
-		return "Hello World";
-	}
-
 }
