@@ -1,6 +1,9 @@
 package project.mbickne1.bot.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 // Consider renaming serverId to GuildID
 
@@ -11,6 +14,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @OneToOne
     private Long user_id;
+
     @Column(name = "discordId")
     private String discordId;
 
@@ -50,6 +54,17 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<String> getFieldNames() {
+        List<String> res = new ArrayList<>(Arrays.asList(
+                "userId",
+                "discordID",
+                "serverId",
+                "name"
+        ));
+
+        return res;
     }
 
     @Override

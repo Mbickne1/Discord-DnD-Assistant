@@ -8,7 +8,6 @@ public class Character {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @ManyToOne
     private Long characterId;
 
 //    @OneToOne(mappedBy = "campaign_id")
@@ -16,7 +15,8 @@ public class Character {
     private Long campaignId;
 //    @OneToOne(mappedBy = "user_id")
     //TODO: FIGURE THIS SHIT OUT
-    @OneToOne(mappedBy = "discordId")
+    @OneToOne
+    @JoinColumn(name = "ownerId", referencedColumnName = "discordId")
 //    @Column(name = "ownerId")
     private String ownerId;
 
@@ -35,9 +35,7 @@ public class Character {
     @Column(name = "name")
     private String name;
 
-    public Character() {
-
-    }
+    public Character() {}
 
     public Character(
             Long id,
