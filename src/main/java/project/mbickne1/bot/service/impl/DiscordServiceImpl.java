@@ -14,11 +14,14 @@ import javax.security.auth.login.LoginException;
 
 public class DiscordServiceImpl implements DiscordService {
     private JDA bot;
-    private Enviornment env = new Enviornment();
-    private CommandClientService commandService = new CommandClientServiceImpl();
+    private Enviornment env;
+    private CommandClientService commandService;
 
     @Override
     public void start() throws LoginException {
+        this.commandService = new CommandClientServiceImpl();
+        this.env = new Enviornment();
+
         this.bot = JDABuilder.createDefault(env.BOT_TOKEN)
                 .setActivity(Activity.playing("Dungeons and Dragons"))
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)

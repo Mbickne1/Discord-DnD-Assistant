@@ -24,9 +24,9 @@ public class CampaignController {
             Map<String, String> json = new HashMap<>();
 
             json.put("characters", campaigns.get(i).getCharacters().toString());
-            json.put("dungeon_master", campaigns.get(i).getDungeon_master().toString());
+            json.put("dungeonMaster", campaigns.get(i).getDungeonMaster());
             json.put("name", campaigns.get(i).getName());
-            json.put("id", campaigns.get(i).getId().toString());
+            json.put("campaignId", campaigns.get(i).getCampaignId().toString());
 
             res.add(new JSONObject(json));
         }

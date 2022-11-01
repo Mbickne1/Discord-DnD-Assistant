@@ -9,14 +9,13 @@ public class Campaign {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long campaign_id;
+    private Long campaignId;
 
     @Column(name = "name")
     private String name;
 
-//    @OneToOne(mappedBy = "user_id")
-    @Column(name = "dungeon_master")
-    private Long dungeon_master;
+    @Column(name = "dungeonMaster")
+    private String dungeonMaster;
 
 //    @Column(name = "characters")
     @OneToMany(mappedBy = "characterId")
@@ -26,19 +25,18 @@ public class Campaign {
 
     }
 
-    public Campaign(Long id, String name, Long dungeon_master, List<Character> characters) {
-        this.campaign_id = id;
+    public Campaign(String name, String dungeonMaster, List<Character> characters) {
         this.name = name;
-        this.dungeon_master = dungeon_master;
+        this.dungeonMaster = dungeonMaster;
         this.characters = characters;
     }
 
-    public Long getId() {
-        return campaign_id;
+    public Long getCampaignId() {
+        return this.campaignId;
     }
 
-    public void setId(Long id) {
-        this.campaign_id = id;
+    public void setCampaignId(Long id) {
+        this.campaignId = id;
     }
 
     public String getName() {
@@ -49,12 +47,12 @@ public class Campaign {
         this.name = name;
     }
 
-    public Long getDungeon_master() {
-        return dungeon_master;
+    public String getDungeonMaster() {
+        return dungeonMaster;
     }
 
-    public void setDungeon_master(Long dungeon_master) {
-        this.dungeon_master = dungeon_master;
+    public void setDungeonMaster(String dungeonMaster) {
+        this.dungeonMaster = dungeonMaster;
     }
 
     public List<Character> getCharacters() {

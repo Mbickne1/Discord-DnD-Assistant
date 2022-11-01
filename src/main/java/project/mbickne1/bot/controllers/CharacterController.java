@@ -45,7 +45,7 @@ public class CharacterController {
             json.put("campaign_id", characters.get(i).getCampaignId().toString());
             json.put("owner_id", characters.get(i).getOwnerId().toString());
             json.put("name", characters.get(i).getName());
-            json.put("id", characters.get(i).getId().toString());
+            json.put("id", characters.get(i).getCharacterId().toString());
 
             res.add(new JSONObject(json));
         }

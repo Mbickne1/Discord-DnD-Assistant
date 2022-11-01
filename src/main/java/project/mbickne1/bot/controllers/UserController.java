@@ -31,7 +31,7 @@ public class UserController {
             json.put("server_id", users.get(i).getServerId());
             json.put("discord_id", String.valueOf(users.get(i).getDiscordId()));
             json.put("name", users.get(i).getName());
-            json.put("id", users.get(i).getId().toString());
+            json.put("id", users.get(i).getUserId().toString());
 
             res.add(new JSONObject(json));
         }
@@ -70,7 +70,7 @@ public class UserController {
             json.put("server_id", users.get(i).getServerId());
             json.put("discord_id", String.valueOf(users.get(i).getDiscordId()));
             json.put("name", users.get(i).getName());
-            json.put("id", users.get(i).getId().toString());
+            json.put("id", users.get(i).getUserId().toString());
 
             res.add(new JSONObject(json));
         }
@@ -95,7 +95,7 @@ public class UserController {
                 user.setName(name);
             }
             if(serverId != null) {
-                user.setServer_id(serverId);
+                user.setServerId(serverId);
             }
         }
 

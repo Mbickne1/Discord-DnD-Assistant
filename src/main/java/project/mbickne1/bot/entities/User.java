@@ -10,10 +10,10 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @OneToOne
-    private Long user_id;
+    private Long userId;
 
     @Column(name = "discordId")
     private String discordId;
@@ -28,14 +28,14 @@ public class User {
 
     }
 
-    public User(String discord_id, String name, String server_id) {
-        this.discordId = discord_id;
-        this.serverId = server_id;
+    public User(String discordId, String name, String serverId) {
+        this.discordId = discordId;
+        this.serverId = serverId;
         this.name = name;
     }
 
-    public Long getId() {
-        return this.user_id;
+    public Long getUserId() {
+        return this.userId;
     }
 
     public String getDiscordId() { return this.discordId; }
@@ -50,28 +50,26 @@ public class User {
         this.discordId = id;
     }
 
-    public void setServer_id(String id) { this.serverId = id; }
+    public void setServerId(String id) { this.serverId = id; }
 
     public void setName(String name) {
         this.name = name;
     }
 
     public List<String> getFieldNames() {
-        List<String> res = new ArrayList<>(Arrays.asList(
+        return new ArrayList<>(Arrays.asList(
                 "userId",
                 "discordID",
                 "serverId",
                 "name"
         ));
-
-        return res;
     }
 
     @Override
     public String toString() {
 
         return "{" +
-                "user_id: " + this.user_id + ", discordId: " + this.discordId +
+                "id: " + this.userId + ", discordId: " + this.discordId +
                 ", name: " + this.name + ", serverId: " + this.serverId
                 + "}";
     }

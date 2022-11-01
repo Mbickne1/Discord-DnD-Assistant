@@ -10,14 +10,10 @@ public class Character {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long characterId;
 
-//    @OneToOne(mappedBy = "campaign_id")
     @Column(name = "campaignId")
     private Long campaignId;
-//    @OneToOne(mappedBy = "user_id")
-    //TODO: FIGURE THIS SHIT OUT
-    @OneToOne
-    @JoinColumn(name = "ownerId", referencedColumnName = "discordId")
-//    @Column(name = "ownerId")
+
+    @Column(name = "ownerId")
     private String ownerId;
 
     @Column(name = "subclass")
@@ -38,7 +34,6 @@ public class Character {
     public Character() {}
 
     public Character(
-            Long id,
             Long campaignId,
             String ownerId,
             String subclass,
@@ -47,7 +42,6 @@ public class Character {
             String race,
             String name
     ) {
-        this.characterId = id;
         this.campaignId = campaignId;
         this.ownerId = ownerId;
         this.subclass = subclass;
@@ -57,11 +51,11 @@ public class Character {
         this.name = name;
     }
 
-    public Long getId() {
+    public Long getCharacterId() {
         return characterId;
     }
 
-    public void setId(Long id) {
+    public void setCharacterId(Long id) {
         this.characterId = id;
     }
 
